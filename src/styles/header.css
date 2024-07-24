@@ -1,0 +1,7 @@
+.header-container {
+  @apply px-4 p-2 bg-sky-950 w-full mx-auto sticky flex flex-row items-center justify-between  h-auto top-0 z-20 mb-4;
+}
+
+.header-container img {
+  @apply w-20;
+}

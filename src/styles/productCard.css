@@ -1,0 +1,15 @@
+.productCard {
+  @apply p-4 flex flex-col justify-start items-center;
+}
+
+.productCard:hover {
+  @apply rounded-lg;
+}
+
+.productCard:hover img {
+  @apply scale-105;
+}
+
+.productCard img {
+  @apply w-52 h-52 object-contain transition-all;
+}

@@ -1,0 +1,10 @@
+.category-card {
+  @apply flex flex-row justify-center items-center gap-2 p-2 rounded-xl text-base text-start font-bold transition-all;
+}
+
+.category-card:hover {
+  @apply bg-slate-400 scale-105;
+}
+.category-card img {
+  @apply w-12 object-cover;
+}
