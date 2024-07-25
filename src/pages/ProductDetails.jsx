@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useProducts } from "../useProducts";
 import "../styles/productDetail.css";
+import { Rate } from "../components/Rate";
 
 export function ProductDetails() {
   const { productId } = useParams();
@@ -32,7 +33,7 @@ export function ProductDetails() {
           <h1 className="font-bold text-4xl">{product.title}</h1>
           <h4 className="text-4xl font-bold">€ {product.price}</h4>
           <hr className="bg-slate-400"></hr>
-          <p>rate</p>
+          <Rate rating={product.rating.rate} />
           <p className="text-xl">{product.description}</p>
         </div>
       </section>
