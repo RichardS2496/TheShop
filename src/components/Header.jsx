@@ -1,4 +1,5 @@
 import "../styles/header.css";
+import { LogoApp } from "./LogoApp";
 import { SearchBtn } from "./SearchBtn";
 import { ShopCart } from "./ShopCart";
 const userInfo = "Richard";
@@ -7,7 +8,7 @@ export function Header() {
   return (
     <section className="header-container ">
       <div className="flex flex-row gap-8 w-1/3">
-        <img src="src\assets\logo.svg" alt="" />
+        <LogoApp />
         <form className="flex flex-row w-full" action="">
           <input
             className="w-full bg-white rounded-xl px-2 focus:outline-none"

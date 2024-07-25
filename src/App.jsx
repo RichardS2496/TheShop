@@ -1,13 +1,17 @@
-import "./App.css";
-import { BodyPage } from "./components/BodyPage";
 import { Header } from "./components/Header";
-//import { FetcherProduct } from "./FetcherProduct";
+import { Home } from "./pages/Home";
+import { ProductDetails } from "./pages/ProductDetails";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
     <>
       <Header />
-      <BodyPage />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
+      </Routes>
     </>
   );
 }

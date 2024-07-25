@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ProductView } from "../ProductView";
 import { useProducts } from "../useProducts";
 
@@ -10,17 +11,11 @@ export function MainProductsView() {
   return (
     <section className="mt-4">
       <ul className="grid grid-cols-5 gap-8">
-        {products.slice(0, 10).map((product) => (
+        {products.map((product) => (
           <li key={product.id}>
-            <ProductView product={product} />
-          </li>
-        ))}
-      </ul>
-      <div className="h-44">Banercito</div>
-      <ul className="grid grid-cols-5 gap-8">
-        {products.slice(10, 20).map((product) => (
-          <li key={product.id}>
-            <ProductView product={product} />
+            <Link to={`/product/${product.id}`}>
+              <ProductView product={product} />
+            </Link>
           </li>
         ))}
       </ul>
