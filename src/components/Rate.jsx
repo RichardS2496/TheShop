@@ -30,9 +30,9 @@ export function Rate({ rating }) {
       return <RateMedium35 />;
     } else if (rating <= 4) {
       return <RateHigh4 />;
-    } else if (rating <= 4.5) {
+    } else if (rating < 5) {
       return <RateHigh45 />;
-    } else if (rating <= 5) {
+    } else if (rating === 5) {
       return <RateHigh5 />;
     }
   }

@@ -21,8 +21,8 @@ export function ProductDetails() {
   return (
     <>
       <section className="product-detail flex flex-row gap-12 my-12">
-        <div className="w-1/3">
-          <img className="" src={product.image} alt="" />
+        <div className="product-img-container w-1/3">
+          <img className="product-img" src={product.image} alt="" />
         </div>
         <div className="w-2/3 flex flex-col gap-4 text-start">
           <span className="rounded-full bg-orange-500 px-4 py-2 w-fit text-white text-sm font-semibold">
@@ -33,7 +33,10 @@ export function ProductDetails() {
           <h1 className="font-bold text-4xl">{product.title}</h1>
           <h4 className="text-4xl font-bold">€ {product.price}</h4>
           <hr className="bg-slate-400"></hr>
-          <Rate rating={product.rating.rate} />
+          <div className="flex flex-row items-center justify-start my-[-1.5rem]">
+            <p className="text-sm">Ratings {product.rating.rate} of 5</p>
+            <Rate rating={product.rating.rate} />
+          </div>
           <p className="text-xl">{product.description}</p>
         </div>
       </section>
