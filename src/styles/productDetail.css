@@ -8,5 +8,13 @@
 }
 
 .product-img {
-  @apply w-full transition-all;
+  @apply w-full h-full transition-all object-contain;
+}
+
+.zoomCaptured {
+  @apply w-full bg-slate-500 h-[520px] hidden;
+}
+
+.product-img-hover .zoomCaptured {
+  @apply block absolute top-0 left-0 z-20;
 }
