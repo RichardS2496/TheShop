@@ -14,7 +14,7 @@ export function RateLow2() {
         <rect
           id="XMLID_37_"
           display="inline"
-          fill="#FFFCF0"
+          fill="#00000000"
           width="1200"
           height="800"
         />

@@ -3,12 +3,21 @@ import { useProducts } from "../useProducts";
 import "../styles/productDetail.css";
 import { Rate } from "../components/Rate";
 import useCart from "../components/useCart";
+import { useEffect, useState } from "react";
 
 export function ProductDetails() {
   const { productId } = useParams();
   const { products, error, isLoading } = useProducts();
-  const { addToCart } = useCart();
+  const { addToCart, removeFromCart, cartItems } = useCart();
   const product = products.find((p) => p.id == productId);
+  const [isAdded, setIsAdded] = useState(false);
+
+  useEffect(() => {
+    if (product) {
+      const isProductInCart = cartItems.some((item) => item.id === product.id);
+      setIsAdded(isProductInCart);
+    }
+  }, [cartItems, product]);
 
   function capitalWords(str) {
     return str
@@ -23,6 +32,12 @@ export function ProductDetails() {
 
   const handleAddToCart = () => {
     addToCart(product);
+    setIsAdded(true);
+  };
+
+  const handleRemoveFromCart = () => {
+    removeFromCart(product.id);
+    setIsAdded(false);
   };
 
   return (
@@ -51,12 +66,26 @@ export function ProductDetails() {
             <Rate rating={product.rating.rate} />
           </div>
           <p className="text-xl">{product.description}</p>
-          <button
-            onClick={handleAddToCart}
-            className="bg-blue-500 text-white px-4 py-2 rounded-full mt-4"
-          >
-            Add to Cart
-          </button>
+          <div className="flex flex-row gap-4">
+            {isAdded ? (
+              <button
+                onClick={handleRemoveFromCart}
+                className="bg-red-500 text-white px-4 py-2 rounded-full mt-4"
+              >
+                Remove From Cart
+              </button>
+            ) : (
+              <button
+                onClick={handleAddToCart}
+                className="bg-blue-500 text-white px-4 py-2 rounded-full mt-4"
+              >
+                Add to Cart
+              </button>
+            )}
+            <button className="bg-orange-500 text-white px-4 py-2 rounded-full mt-4">
+              Buy Now
+            </button>
+          </div>
         </div>
       </section>
     </>

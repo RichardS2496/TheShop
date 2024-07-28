@@ -11,7 +11,7 @@ export function RateMedium25() {
       xmlSpace="preserve"
     >
       <g id="Background">
-        <rect id="XMLID_37_" fill="#FFFCF0" width="1200" height="800" />
+        <rect id="XMLID_37_" fill="#00000000" width="1200" height="800" />
       </g>
       <g id="Object">
         <g>

@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
 import "../styles/header.css";
 import { LogoApp } from "./LogoApp";
 import { SearchBtn } from "./SearchBtn";
 import { ShopCart } from "./ShopCart";
+import useCart from "./useCart";
 const userInfo = "Richard";
 
 export function Header() {
+  const { cartQuanty } = useCart();
+
   return (
     <section className="header-container ">
       <div className="flex flex-row gap-8 w-1/3">
@@ -33,9 +37,9 @@ export function Header() {
           <div className="text-xs ">Returns</div>
           <div className="font-bold text-sm">& Orders</div>
         </a>
-        <a href="">
-          <ShopCart />
-        </a>
+        <Link to="/cart">
+          <ShopCart cartQuanty={cartQuanty} />
+        </Link>
       </nav>
     </section>
   );
