@@ -5,6 +5,16 @@ import "../styles/cartShopping.css";
 export function ShoppingCart() {
   const { cartItems } = useCart();
 
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   return (
     <section className="cart-container">
       <div className="items-list-container w-3/4 ">
@@ -39,6 +49,7 @@ export function ShoppingCart() {
                   </div>
                   <div className="w-4/5 px-4 flex flex-col self-start text-start">
                     <h2 className="text-lg">{item.title} </h2>
+                    <h4 className="text-green-500 text-sm">In Stock</h4>
                     <h3>Qty: {item.quantity}</h3>
                   </div>
                 </div>
@@ -50,7 +61,15 @@ export function ShoppingCart() {
           </ul>
         )}
       </div>
-      <div className="price-div w-1/4">Total Amount</div>
+      <div className="price-container text-right w-1/4">
+        <h4 className="text-right text-xl font-semibold text-slate-400">
+          Subtotal
+        </h4>
+        <h6 className="text-slate-800">{totalQuantity} Items</h6>
+        <h2 className="text-right text-4xl font-bold text-slate-800 mb-6">
+          {subtotal.toFixed(2)} €
+        </h2>
+      </div>
     </section>
   );
 }

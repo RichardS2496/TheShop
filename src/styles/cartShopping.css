@@ -6,6 +6,6 @@
   @apply border-2 rounded-xl p-4;
 }
 
-.price-div {
+.price-container {
   @apply rounded-xl border-2  min-h-[420px] p-4;
 }

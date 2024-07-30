@@ -59,11 +59,12 @@ export function ProductDetails() {
             )}
           </span>
           <h1 className="font-bold text-4xl">{product.title}</h1>
-          <h4 className="text-4xl font-bold">€ {product.price}</h4>
+          <h4 className="text-4xl font-bold">{product.price} €</h4>
           <hr className="bg-slate-400"></hr>
           <div className="flex flex-row items-center justify-start my-[-1.5rem]">
             <p className="text-sm">Ratings {product.rating.rate} of 5</p>
             <Rate rating={product.rating.rate} />
+            <p className="text-sm">Based on {product.rating.count} reviews</p>
           </div>
           <p className="text-xl">{product.description}</p>
           <div className="flex flex-row gap-4">
