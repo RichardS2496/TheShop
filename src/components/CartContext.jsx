@@ -43,7 +43,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const cartQuanty = cartItems.reduce((total, item) => {
-    // Verificar que item.quantity es un número
     const quantity = typeof item.quantity === "number" ? item.quantity : 0;
     return total + quantity;
   }, 0);

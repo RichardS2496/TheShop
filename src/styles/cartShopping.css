@@ -1,0 +1,11 @@
+.cart-container {
+  @apply max-w-[1366px] mx-auto flex flex-row gap-4;
+}
+
+.items-list-container {
+  @apply border-2 rounded-xl p-4;
+}
+
+.price-div {
+  @apply rounded-xl border-2  min-h-[420px] p-4;
+}
