@@ -1,17 +1,54 @@
 import { Link } from "react-router-dom";
 import useCart from "../components/useCart";
 import "../styles/cartShopping.css";
+import { useState, useEffect } from "react";
 
 export function ShoppingCart() {
-  const { cartItems } = useCart();
+  const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
+  const [quantities, setQuantities] = useState(
+    cartItems.reduce((acc, item) => {
+      acc[item.id] = item.quantity;
+      return acc;
+    }, {})
+  );
+
+  useEffect(() => {
+    cartItems.forEach((item) => {
+      if (quantities[item.id] !== item.quantity) {
+        updateQuantity(item.id, quantities[item.id]);
+      }
+    });
+  }, [quantities, cartItems, updateQuantity]);
+
+  const handleIncrement = (itemId) => {
+    setQuantities((prevQuantities) => {
+      const newQuantities = {
+        ...prevQuantities,
+        [itemId]: prevQuantities[itemId] + 1,
+      };
+      updateQuantity(itemId, newQuantities[itemId]);
+      return newQuantities;
+    });
+  };
+
+  const handleDecrement = (itemId) => {
+    setQuantities((prevQuantities) => {
+      const newQuantities = {
+        ...prevQuantities,
+        [itemId]: prevQuantities[itemId] > 1 ? prevQuantities[itemId] - 1 : 1,
+      };
+      updateQuantity(itemId, newQuantities[itemId]);
+      return newQuantities;
+    });
+  };
 
   const subtotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) => total + item.price * quantities[item.id],
     0
   );
 
   const totalQuantity = cartItems.reduce(
-    (total, item) => total + item.quantity,
+    (total, item) => total + quantities[item.id],
     0
   );
 
@@ -30,33 +67,64 @@ export function ShoppingCart() {
         <hr></hr>
 
         {cartItems.length === 0 ? (
-          <p>Your cart is empty.</p>
+          <div className="h-full w-full flex items-center justify-center">
+            {" "}
+            <p className="text-2xl font-bold text-slate-400">
+              Your cart is empty.
+            </p>
+          </div>
         ) : (
           <ul className="my-8 flex flex-col gap-4">
             {cartItems.map((item) => (
-              <Link
+              <div
                 className="p-4 flex flex-row items-start justify-between rounded-xl"
                 key={item.id}
                 to={`/products/${item.id}`}
               >
                 <div className=" flex flex-row gap-4 items-center w-5/6">
-                  <div className="w-1/5 h-32">
+                  <Link to={`/products/${item.id}`} className="w-1/5 h-32">
                     <img
                       src={item.image}
                       alt={item.title}
                       className="w-full h-full object-contain"
                     />
-                  </div>
-                  <div className="w-4/5 px-4 flex flex-col self-start text-start">
-                    <h2 className="text-lg">{item.title} </h2>
-                    <h4 className="text-green-500 text-sm">In Stock</h4>
-                    <h3>Qty: {item.quantity}</h3>
+                  </Link>
+                  <div className="w-4/5 px-4 flex flex-col justify-between self-start text-start gap-4">
+                    <div>
+                      <Link to={`/products/${item.id}`} className="text-lg">
+                        {item.title}{" "}
+                      </Link>
+                      <h4 className="text-green-500 text-sm">In Stock</h4>
+                    </div>
+                    <div className="w-full flex flex-row items-center justify-between">
+                      <div className="flex flex-row justify-start gap-2">
+                        <button
+                          className="border-2 self-start px-4 rounded-lg font-bold"
+                          onClick={() => handleDecrement(item.id)}
+                        >
+                          -
+                        </button>
+                        <h3>Qty: {quantities[item.id]}</h3>
+                        <button
+                          className="font-bold border-2 self-start px-4 rounded-lg"
+                          onClick={() => handleIncrement(item.id)}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="flex flex-col items-end w-1/6">
+                <div className="flex flex-col items-end w-1/6 justify-between">
                   <h4 className=" text-xl font-semibold">{item.price} €</h4>
+                  <button
+                    className="text-red-500 self-end"
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    Delete Product
+                  </button>
                 </div>
-              </Link>
+              </div>
             ))}
           </ul>
         )}
@@ -69,6 +137,24 @@ export function ShoppingCart() {
         <h2 className="text-right text-4xl font-bold text-slate-800 mb-6">
           {subtotal.toFixed(2)} €
         </h2>
+        <div className="flex flex-col gap-4 text-center">
+          <Link className="bg-orange-500 w-full rounded-xl p-4 text-bold text-white">
+            Checkout
+          </Link>
+          <Link
+            to="/"
+            className="bg-slate-400 w-full rounded-xl p-4 text-bold text-white"
+          >
+            Continue Shopping
+          </Link>
+        </div>
+        <hr className="mt-4"></hr>
+        <button
+          className="text-center text-xs mt-4 mb-2 self-center"
+          onClick={() => clearCart()}
+        >
+          Clear Cart
+        </button>
       </div>
     </section>
   );

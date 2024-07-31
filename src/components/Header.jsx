@@ -12,7 +12,9 @@ export function Header() {
   return (
     <section className="header-container ">
       <div className="flex flex-row gap-8 w-1/3">
-        <LogoApp />
+        <Link to="/">
+          <LogoApp />
+        </Link>
         <form className="flex flex-row w-full" action="">
           <input
             className="w-full bg-white rounded-xl px-2 focus:outline-none"

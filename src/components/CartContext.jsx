@@ -42,14 +42,33 @@ export const CartProvider = ({ children }) => {
     console.log("Producto removido");
   };
 
+  const updateQuantity = (productId, quantity) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === productId ? { ...item, quantity } : item
+      )
+    );
+  };
+
   const cartQuanty = cartItems.reduce((total, item) => {
     const quantity = typeof item.quantity === "number" ? item.quantity : 0;
     return total + quantity;
   }, 0);
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, cartQuanty }}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        cartQuanty,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>
