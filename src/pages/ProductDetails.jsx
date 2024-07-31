@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useProducts } from "../useProducts";
 import "../styles/productDetail.css";
 import { Rate } from "../components/Rate";
-import useCart from "../components/useCart";
+import useCart from "../useCart";
 import { useEffect, useState } from "react";
 
 export function ProductDetails() {

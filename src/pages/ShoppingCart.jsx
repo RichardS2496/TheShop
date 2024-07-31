@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useCart from "../components/useCart";
+import useCart from "../useCart";
 import "../styles/cartShopping.css";
 import { useState, useEffect } from "react";
 
@@ -143,9 +143,11 @@ export function ShoppingCart() {
           {subtotal.toFixed(2)} €
         </h2>
         <div className="flex flex-col gap-4 text-center">
-          <Link className="bg-orange-500 w-full rounded-xl p-4 text-bold text-white">
-            Checkout
-          </Link>
+          {cartItems.length > 0 && (
+            <Link className="bg-orange-500 w-full rounded-xl p-4 text-bold text-white">
+              Checkout
+            </Link>
+          )}
           <Link
             to="/"
             className="bg-slate-400 w-full rounded-xl p-4 text-bold text-white"

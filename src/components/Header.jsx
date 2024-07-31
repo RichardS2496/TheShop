@@ -3,7 +3,7 @@ import "../styles/header.css";
 import { LogoApp } from "./LogoApp";
 import { SearchBtn } from "./SearchBtn";
 import { ShopCart } from "./ShopCart";
-import useCart from "./useCart";
+import useCart from "../useCart";
 const userInfo = "Richard";
 
 export function Header() {

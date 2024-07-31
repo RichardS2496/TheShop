@@ -3,7 +3,7 @@ import { Home } from "./pages/Home";
 import { ProductDetails } from "./pages/ProductDetails";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { CartProvider } from "./components/CartContext";
+import { CartProvider } from "./CartContext";
 import { ShoppingCart } from "./pages/ShoppingCart";
 import { Footer } from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";

@@ -1,4 +1,4 @@
-import { BodyPage } from "../components/BodyPage";
+import { BodyPage } from "./BodyPage";
 
 export function Home() {
   return (

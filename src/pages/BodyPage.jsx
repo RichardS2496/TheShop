@@ -1,6 +1,6 @@
-import { CategoriesLine } from "./CategoriesLine";
-import { Hero } from "./Hero";
-import { MainProductsView } from "./MainProductsView";
+import { CategoriesLine } from "../components/CategoriesLine";
+import { Hero } from "../components/Hero";
+import { MainProductsView } from "../components/MainProductsView";
 import "../App.css";
 
 export function BodyPage() {
