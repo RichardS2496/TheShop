@@ -5,16 +5,21 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { CartProvider } from "./components/CartContext";
 import { ShoppingCart } from "./pages/ShoppingCart";
+import { Footer } from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <CartProvider>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products/:productId" element={<ProductDetails />} />
-        <Route path="/cart" element={<ShoppingCart />} />
-      </Routes>
+      <ScrollToTop>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products/:productId" element={<ProductDetails />} />
+          <Route path="/cart" element={<ShoppingCart />} />
+        </Routes>
+        <Footer />
+      </ScrollToTop>
     </CartProvider>
   );
 }

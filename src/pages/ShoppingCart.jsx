@@ -13,12 +13,13 @@ export function ShoppingCart() {
   );
 
   useEffect(() => {
-    cartItems.forEach((item) => {
-      if (quantities[item.id] !== item.quantity) {
-        updateQuantity(item.id, quantities[item.id]);
-      }
-    });
-  }, [quantities, cartItems, updateQuantity]);
+    setQuantities(
+      cartItems.reduce((acc, item) => {
+        acc[item.id] = item.quantity;
+        return acc;
+      }, {})
+    );
+  }, [cartItems]);
 
   const handleIncrement = (itemId) => {
     setQuantities((prevQuantities) => {
@@ -40,6 +41,10 @@ export function ShoppingCart() {
       updateQuantity(itemId, newQuantities[itemId]);
       return newQuantities;
     });
+  };
+
+  const handleRemove = (itemId) => {
+    removeFromCart(itemId);
   };
 
   const subtotal = cartItems.reduce(
@@ -119,7 +124,7 @@ export function ShoppingCart() {
                   <h4 className=" text-xl font-semibold">{item.price} €</h4>
                   <button
                     className="text-red-500 self-end"
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => handleRemove(item.id)}
                   >
                     Delete Product
                   </button>

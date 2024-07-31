@@ -7,7 +7,7 @@ import useCart from "./useCart";
 const userInfo = "Richard";
 
 export function Header() {
-  const { cartQuanty } = useCart();
+  const { cartQuantity } = useCart();
 
   return (
     <section className="header-container ">
@@ -40,7 +40,7 @@ export function Header() {
           <div className="font-bold text-sm">& Orders</div>
         </a>
         <Link to="/cart">
-          <ShopCart cartQuanty={cartQuanty} />
+          <ShopCart cartQuanty={cartQuantity} />
         </Link>
       </nav>
     </section>

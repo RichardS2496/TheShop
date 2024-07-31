@@ -10,7 +10,7 @@ export function MainProductsView() {
 
   return (
     <section className="mt-4">
-      <ul className="grid grid-cols-5 gap-8">
+      <ul className="grid grid-cols-5 gap-8 mb-16">
         {products.map((product) => (
           <li key={product.id}>
             <Link to={`/product/${product.id}`}>
