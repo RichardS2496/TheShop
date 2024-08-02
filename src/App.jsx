@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { CartProvider } from "./CartContext";
 import { ShoppingCart } from "./pages/ShoppingCart";
-import { Footer } from "./components/Footer";
+//import { Footer } from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -18,8 +18,9 @@ function App() {
           <Route path="/products/:productId" element={<ProductDetails />} />
           <Route path="/cart" element={<ShoppingCart />} />
         </Routes>
-        <Footer />
       </ScrollToTop>
+      {/*  <Footer />
+       */}{" "}
     </CartProvider>
   );
 }

@@ -4,10 +4,13 @@ import { LogoApp } from "./LogoApp";
 import { SearchBtn } from "./SearchBtn";
 import { ShopCart } from "./ShopCart";
 import useCart from "../useCart";
+import { useMyLocation } from "./useMyLocation";
+
 const userInfo = "Richard";
 
 export function Header() {
   const { cartQuantity } = useCart();
+  const { location, loading } = useMyLocation();
 
   return (
     <section className="header-container ">
@@ -33,12 +36,16 @@ export function Header() {
         </a>
         <a className="text-start" href="">
           <div className="text-xs">Ship to</div>
-          <div className="font-bold text-sm">Current Location</div>
+          <div className="font-bold text-sm">
+            {loading
+              ? "Loading location..."
+              : `${location.city}, ${location.zip}`}
+          </div>
         </a>
-        <a className="text-start" href="">
+        <div className="text-start text-slate-500">
           <div className="text-xs ">Returns</div>
           <div className="font-bold text-sm">& Orders</div>
-        </a>
+        </div>
         <Link to="/cart">
           <ShopCart cartQuanty={cartQuantity} />
         </Link>

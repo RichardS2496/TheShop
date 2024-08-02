@@ -1,3 +1,3 @@
 .footer-section {
-  @apply px-8 p-2 bg-slate-800 w-full mx-auto   h-[320px];
+  @apply px-8 p-2 bg-slate-800 w-full mx-auto sticky bottom-0  h-[320px];
 }
