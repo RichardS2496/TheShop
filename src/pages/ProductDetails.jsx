@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useProducts } from "../useProducts";
 import "../styles/productDetail.css";
 import { Rate } from "../components/Rate";
@@ -53,11 +53,14 @@ export function ProductDetails() {
         </div>
         <div className="w-2/3 flex flex-col gap-4 text-start">
           <div className="zoomCaptured "></div>
-          <span className="rounded-full bg-orange-500 px-4 py-2 w-fit text-white text-sm font-semibold">
+          <Link
+            to=""
+            className="rounded-full bg-orange-500 px-4 py-2 w-fit text-white text-sm font-semibold"
+          >
             {capitalWords(
               product.category === "jewelery" ? "jewelry" : product.category
             )}
-          </span>
+          </Link>
           <h1 className="font-bold text-4xl">{product.title}</h1>
           <h4 className="text-4xl font-bold">{product.price} €</h4>
           <hr className="bg-slate-400"></hr>

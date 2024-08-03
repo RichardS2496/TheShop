@@ -13,11 +13,11 @@ export function CategoriesLine() {
           <img src="src\assets\cat_img\prices.png" alt="" />
           <h4>Best Deals</h4>
         </Link>
-        <Link to={"/category/men"} className="category-card">
+        <Link to={"/category/men's clothing"} className="category-card">
           <img src="src\assets\cat_img\men.png" alt="" />
           <h4>Men's Clothing</h4>
         </Link>
-        <Link to={"/category/women"} className="category-card">
+        <Link to={"/category/women's clothing"} className="category-card">
           <img src="src\assets\cat_img\women.png" alt="" />
           <h4>Women's Clothing</h4>
         </Link>
@@ -25,7 +25,7 @@ export function CategoriesLine() {
           <img src="src\assets\cat_img\electronic.png" alt="" />
           <h4>Electronics</h4>
         </Link>
-        <Link to={"/category/jewelry"} className="category-card">
+        <Link to={"/category/jewelery"} className="category-card">
           <img src="src\assets\cat_img\jewelry.png" alt="" />
           <h4>Jewelry</h4>
         </Link>
