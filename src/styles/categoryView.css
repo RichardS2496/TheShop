@@ -1,0 +1,13 @@
+.category-section {
+  margin-top: 1rem;
+  max-width: 1366px;
+  margin: 0 auto;
+}
+
+.filter-section {
+  @apply sticky top-4 left-0 rounded-xl border-2  h-fit p-4;
+}
+
+.categoryFilter-card {
+  @apply text-start;
+}
