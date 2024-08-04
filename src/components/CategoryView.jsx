@@ -20,10 +20,7 @@ export function CategoryView() {
         {products.map((product) => (
           <li key={product.id}>
             <Link to={`/product/${product.id}`}>
-              <ProductView
-                productCategory={productCategory}
-                product={product}
-              />
+              <ProductView product={product} />
             </Link>
           </li>
         ))}

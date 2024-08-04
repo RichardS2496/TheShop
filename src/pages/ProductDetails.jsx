@@ -54,7 +54,7 @@ export function ProductDetails() {
         <div className="w-2/3 flex flex-col gap-4 text-start">
           <div className="zoomCaptured "></div>
           <Link
-            to=""
+            to={`/category/${product.category}`}
             className="rounded-full bg-orange-500 px-4 py-2 w-fit text-white text-sm font-semibold"
           >
             {capitalWords(
