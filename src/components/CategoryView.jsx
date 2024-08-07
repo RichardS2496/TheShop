@@ -18,14 +18,11 @@ export function CategoryView() {
     <section className="category-section">
       <div className="flex flex-row gap-8">
         <div className="w-1/5 filter-section">
-          <nav className="grid grid-cols-1 gap-4  ">
+          <nav className="grid grid-cols-1 gap-4 my-4">
             <Link to="/" className="categoryFilter-card">
               Home
             </Link>
 
-            <Link className="categoryFilter-card">
-              <h4>Best Deals</h4>
-            </Link>
             <Link
               to={"/category/men's clothing"}
               className="categoryFilter-card"
@@ -45,6 +42,8 @@ export function CategoryView() {
               <h4>Jewelry</h4>
             </Link>
           </nav>
+          <hr></hr>
+          <div className="mt-4 text-slate-300">coming soon...</div>
         </div>
         <div className="w-4/5 ">
           <ul className="grid grid-cols-4 gap-8 mb-16">

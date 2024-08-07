@@ -4,15 +4,10 @@ import "../styles/categoriesLine.css";
 export function CategoriesLine() {
   return (
     <section>
-      <nav className="grid grid-cols-6 gap-4 mt-4">
+      <nav className="grid grid-cols-5 gap-4 mt-4">
         <a className=" bg-orange-500 text-white flex flex-row justify-center items-center gap-2 p-2 rounded-xl text-base font-semibold transition-all">
           All Products
         </a>
-
-        <Link className="category-card">
-          <img src="src\assets\cat_img\prices.png" alt="" />
-          <h4>Best Deals</h4>
-        </Link>
         <Link to={"/category/men's clothing"} className="category-card">
           <img src="src\assets\cat_img\men.png" alt="" />
           <h4>Men's Clothing</h4>

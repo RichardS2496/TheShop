@@ -1,16 +1,24 @@
 import { Link } from "react-router-dom";
 import "../styles/header.css";
 import { LogoApp } from "./LogoApp";
-import { SearchBtn } from "./SearchBtn";
+//import { SearchBtn } from "./SearchBtn";
 import { ShopCart } from "./ShopCart";
 import useCart from "../useCart";
 import { useMyLocation } from "./useMyLocation";
+//import { useState } from "react";
 
 const userInfo = "Richard";
 
 export function Header() {
   const { cartQuantity } = useCart();
   const { location, loading } = useMyLocation();
+  /* const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate("`/search?query=${searchTerm}`");
+  };*/
 
   return (
     <section className="header-container ">
@@ -18,16 +26,18 @@ export function Header() {
         <Link to="/">
           <LogoApp />
         </Link>
-        <form className="flex flex-row w-full" action="">
+        {/* <form className="flex flex-row w-full" onSubmit={handleSearchSubmit}>
           <input
             className="w-full bg-white rounded-xl px-2 focus:outline-none"
             type="text"
             placeholder="Search in The Shop"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button className="rounded-full ml-[-2rem]">
+          <button type="submit" className="rounded-full ml-[-2rem]">
             <SearchBtn />
           </button>
-        </form>
+        </form>*/}
       </div>
       <nav className="w-2/3 flex flex-row justify-end items-center gap-8 text-white">
         <a className="text-start" href="">
