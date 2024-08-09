@@ -40,10 +40,10 @@ export function Header() {
         </form>*/}
       </div>
       <nav className="w-2/3 flex flex-row justify-end items-center gap-8 text-white">
-        <a className="text-start" href="">
+        <Link className="text-start" to="/login">
           <div className="text-xs">Welcome</div>
           <div className="font-bold text-sm">{userInfo}</div>
-        </a>
+        </Link>
         <a className="text-start" href="">
           <div className="text-xs">Ship to</div>
           <div className="font-bold text-sm">
