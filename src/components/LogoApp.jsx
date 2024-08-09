@@ -5,7 +5,7 @@ export function LogoApp() {
       width="80"
       zoomAndPan="magnify"
       viewBox="0 0 285 165.000002"
-      height=""
+      height="100%"
       preserveAspectRatio="xMidYMid meet"
       version="1.0"
     >

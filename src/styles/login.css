@@ -34,6 +34,10 @@ form {
   outline: none;
 }
 
+.input-field:focus {
+  border-color: orange;
+}
+
 .label-forInput {
   @apply text-start text-sm text-slate-500;
 }
