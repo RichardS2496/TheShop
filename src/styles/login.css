@@ -1,9 +1,39 @@
 .login-section {
-  max-width: 800px;
+  max-width: 50%;
   margin: 0 auto;
   padding: 0;
   height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.btn-login {
+  @apply w-1/2 p-4  text-xl font-semibold text-slate-600;
+  border-bottom: 5px solid transparent;
+}
+
+.btn-login.active {
+  border-bottom-color: orange;
+}
+
+.final-btn {
+  @apply w-full p-4 bg-orange-500 rounded-xl text-lg font-semibold text-white;
+}
+
+form {
+  @apply w-full;
+}
+
+.input-container {
+  @apply w-full flex flex-col self-start;
+}
+
+.input-field {
+  @apply border-2 w-full px-4 py-2 rounded-xl;
+  outline: none;
+}
+
+.label-forInput {
+  @apply text-start text-sm text-slate-500;
 }
