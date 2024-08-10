@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function useMyLocation() {
-  const [location, setLocation] = useState({ city: "", zip: "" });
+  const [myLocation, setMyLocation] = useState({ city: "", zip: "" });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export function useMyLocation() {
         const res = await fetch("https://ipapi.co/json/");
         const data = await res.json();
         const { city, postal: zip } = data;
-        setLocation({ city, zip });
+        setMyLocation({ city, zip });
       } catch (error) {
         console.error("Error fetching location:", error);
       } finally {
@@ -20,5 +20,5 @@ export function useMyLocation() {
     fetchLocation();
   }, []);
 
-  return { location, loading };
+  return { myLocation, loading };
 }

@@ -5,13 +5,14 @@ import { LogoApp } from "./LogoApp";
 import { ShopCart } from "./ShopCart";
 import useCart from "../useCart";
 import { useMyLocation } from "./useMyLocation";
+import { useLocation } from "react-router-dom";
 //import { useState } from "react";
 
-const userInfo = "Richard";
-
 export function Header() {
+  const location = useLocation();
+  const emailOfUser = location.state?.userEmail || "";
   const { cartQuantity } = useCart();
-  const { location, loading } = useMyLocation();
+  const { myLocation, loading } = useMyLocation();
   /* const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
@@ -41,15 +42,17 @@ export function Header() {
       </div>
       <nav className="w-2/3 flex flex-row justify-end items-center gap-8 text-white">
         <Link className="text-start" to="/login">
-          <div className="text-xs">Welcome</div>
-          <div className="font-bold text-sm">{userInfo}</div>
+          <div className="text-xs"> {emailOfUser ? "Welcome," : "Login /"}</div>
+          <div className="font-bold text-sm">
+            {emailOfUser ? emailOfUser : "Sign Up"}
+          </div>
         </Link>
         <a className="text-start" href="">
           <div className="text-xs">Ship to</div>
           <div className="font-bold text-sm">
             {loading
               ? "Loading location..."
-              : `${location.city}, ${location.zip}`}
+              : `${myLocation.city}, ${myLocation.zip}`}
           </div>
         </a>
         <div className="text-start text-slate-500">

@@ -1,15 +1,52 @@
 import "../styles/login.css";
 import { useState } from "react";
+import { appFirebase } from "../firebase-config";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+const auth = getAuth(appFirebase);
 
 export function Login() {
   const [isRegistered, setIsRegistered] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const navigate = useNavigate();
 
   function switchToLogin() {
     setIsRegistered(false);
+    setErrorMessage("");
   }
 
   function switchToRegister() {
     setIsRegistered(true);
+    setErrorMessage("");
+  }
+
+  async function authentication(e) {
+    e.preventDefault();
+    const email = e.target.elements["email-field"].value;
+    const password = e.target.elements["password-field"].value;
+
+    try {
+      if (isRegistered) {
+        await createUserWithEmailAndPassword(auth, email, password);
+      } else {
+        await signInWithEmailAndPassword(auth, email, password);
+      }
+      setUserEmail(email); // Cambia userEmail por email
+      navigate("/", { state: { userEmail: email } }); // Cambia userEmail por email
+    } catch (error) {
+      if (isRegistered && error.code === "auth/email-already-in-use") {
+        setErrorMessage("User is already registered with this email.");
+      } else {
+        setErrorMessage(
+          "Authentication failed. Please check your credentials."
+        );
+      }
+    }
   }
 
   return (
@@ -31,54 +68,36 @@ export function Login() {
               Sign Up
             </button>
           </div>
-
-          {isRegistered ? (
-            <div>
-              <form className="flex flex-col  gap-4" action="">
-                <div className="input-container">
-                  <label className="label-forInput" htmlFor="email-field">
-                    Email
-                  </label>
-                  <input className="input-field" type="text" id="email-field" />
-                </div>
-                <div className="input-container">
-                  <label className="label-forInput" htmlFor="password-field">
-                    Password
-                  </label>
-                  <input
-                    className="input-field"
-                    type="password"
-                    id="password-field"
-                  />
-                </div>
-
-                <button className="final-btn">Sign Up</button>
-              </form>
-            </div>
-          ) : (
-            <div>
-              <form className="flex flex-col  gap-4" action="">
-                <div className="input-container">
-                  <label className="label-forInput" htmlFor="email-field">
-                    Email
-                  </label>
-                  <input className="input-field" type="text" id="email-field" />
-                </div>
-                <div className="input-container ">
-                  <label className="label-forInput" htmlFor="password-field">
-                    Password
-                  </label>
-                  <input
-                    className="input-field"
-                    type="password"
-                    id="password-field"
-                  />
-                </div>
-
-                <button className="final-btn">Login</button>
-              </form>
-            </div>
+          {errorMessage && (
+            <p className="text-red-500">{errorMessage}</p> // Mostrar mensaje de error
           )}
+
+          <form
+            className="flex flex-col  gap-4"
+            action=""
+            onSubmit={authentication}
+          >
+            <div className="input-container">
+              <label className="label-forInput" htmlFor="email-field">
+                Email
+              </label>
+              <input className="input-field" type="text" id="email-field" />
+            </div>
+            <div className="input-container">
+              <label className="label-forInput" htmlFor="password-field">
+                Password
+              </label>
+              <input
+                className="input-field"
+                type="password"
+                id="password-field"
+              />
+            </div>
+
+            <button className="final-btn">
+              {isRegistered ? "Sign Up" : "Login"}
+            </button>
+          </form>
         </div>
 
         <div className="bg-sky-950 w-7/12 flex flex-col justify-center items-center gap-4 p-8">
