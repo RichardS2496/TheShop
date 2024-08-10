@@ -4,14 +4,12 @@ import { LogoApp } from "./LogoApp";
 //import { SearchBtn } from "./SearchBtn";
 import { ShopCart } from "./ShopCart";
 import { useMyLocation } from "./useMyLocation";
-import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../CartContext";
 
 //import { useState } from "react";
 
 export function Header() {
-  const location = useLocation();
   const { cartQuantity, user } = useContext(CartContext); // Obteniendo el usuario del CartContext
   const { myLocation, loading } = useMyLocation();
 
@@ -45,7 +43,7 @@ export function Header() {
         */}
       </div>
       <nav className="w-2/3 flex flex-row justify-end items-center gap-8 text-white">
-        <Link className="text-start" to="/login">
+        <Link className="text-start" to={user ? "/profile" : "/login"}>
           <div className="text-xs">{user ? "Welcome," : "Sign Up /"}</div>
           <div className="font-bold text-sm">{user ? user.email : "Login"}</div>
         </Link>

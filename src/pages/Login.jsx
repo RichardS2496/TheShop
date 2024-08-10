@@ -68,9 +68,7 @@ export function Login() {
               Sign Up
             </button>
           </div>
-          {errorMessage && (
-            <p className="text-red-500">{errorMessage}</p> // Mostrar mensaje de error
-          )}
+          {errorMessage && <p className="text-red-500">{errorMessage}</p>}
 
           <form
             className="flex flex-col  gap-4"

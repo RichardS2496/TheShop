@@ -41,3 +41,11 @@ form {
 .label-forInput {
   @apply text-start text-sm text-slate-500;
 }
+
+/*USER PROFILE*/
+
+.userProfile-section {
+  max-width: 1366px;
+  height: 80vh;
+  @apply rounded-xl border-2 mx-auto flex flex-col items-start p-8 gap-4;
+}

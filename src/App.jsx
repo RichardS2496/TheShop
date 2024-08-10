@@ -10,11 +10,12 @@ import ScrollToTop from "./components/ScrollToTop";
 import { CategoryView } from "./components/CategoryView";
 //import { SearchResults } from "./pages/SearchResults";
 import { NotFound } from "./pages/NotFound";
-import { Login } from "./components/Login";
+import { Login } from "./pages/Login";
 import { useState } from "react";
 //firebase
 import { appFirebase } from "./firebase-config";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { UserProfile } from "./pages/UserProfile";
 
 const auth = getAuth(appFirebase);
 //------
@@ -37,6 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="/products/:productId" element={<ProductDetails />} />
           {/*<Route path="/search" element={<SearchResults />} />*/}
           <Route path="/category/:productCategory" element={<CategoryView />} />
@@ -44,7 +46,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ScrollToTop>
-      {/*  <Footer />*/}{" "}
+      {/*<Footer />*/}{" "}
     </CartProvider>
   );
 }
