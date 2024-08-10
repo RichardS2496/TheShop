@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { appFirebase } from "./firebase-config";
 
 export const CartContext = createContext();
 
@@ -7,6 +9,21 @@ export const CartProvider = ({ children }) => {
     const savedCart = localStorage.getItem("cartItems");
     return savedCart ? JSON.parse(savedCart) : [];
   });
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth(appFirebase);
+
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -60,6 +77,7 @@ export const CartProvider = ({ children }) => {
         updateQuantity,
         cartQuantity,
         clearCart,
+        user,
       }}
     >
       {children}

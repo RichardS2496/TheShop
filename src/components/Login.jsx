@@ -36,8 +36,8 @@ export function Login() {
       } else {
         await signInWithEmailAndPassword(auth, email, password);
       }
-      setUserEmail(email); // Cambia userEmail por email
-      navigate("/", { state: { userEmail: email } }); // Cambia userEmail por email
+      setUserEmail(email);
+      navigate("/", { state: { userEmail: email } });
     } catch (error) {
       if (isRegistered && error.code === "auth/email-already-in-use") {
         setErrorMessage("User is already registered with this email.");
