@@ -15,7 +15,7 @@ export function Hero() {
       <div className=" w-1/2">
         <img
           className="img-hero"
-          src="src\http://runmydev.com/wp-content/uploads/2024/08/hero_img.png"
+          src="http://runmydev.com/wp-content/uploads/2024/08/hero_img.png"
         />
       </div>
     </section>
