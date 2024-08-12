@@ -9,7 +9,7 @@ export function SearchResults() {
   const query = new URLSearchParams(location.search).get("query");
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products`)
+    fetch(`/api/products`)
       .then((res) => res.json())
       .then((json) => {
         const filteredProducts = json.filter((product) =>

@@ -9,7 +9,7 @@ export function CategoryView() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/category/${productCategory}`)
+    fetch(`/api/products/category/${productCategory}`)
       .then((res) => res.json())
       .then((json) => setProducts(json));
   }, [productCategory]);
