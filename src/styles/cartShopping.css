@@ -1,9 +1,9 @@
 .cart-container {
-  @apply max-w-[1366px] mx-auto my-4 flex flex-row gap-4;
+  @apply max-w-[1366px] mx-auto my-4 flex flex-row gap-4 h-screen;
 }
 
 .items-list-container {
-  @apply border-2 rounded-xl p-4;
+  @apply border-2 rounded-xl p-4 h-fit;
 }
 
 .price-container {

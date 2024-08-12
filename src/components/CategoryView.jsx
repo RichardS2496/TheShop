@@ -15,7 +15,7 @@ export function CategoryView() {
   }, [productCategory]);
 
   return (
-    <section className="category-section">
+    <section className="category-section h-screen">
       <div className="flex flex-row gap-8">
         <div className="w-1/5 filter-section">
           <nav className="grid grid-cols-1 gap-4 my-4">

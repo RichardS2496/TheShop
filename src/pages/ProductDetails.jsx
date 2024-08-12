@@ -42,7 +42,7 @@ export function ProductDetails() {
 
   return (
     <>
-      <section className="product-detail flex flex-row gap-12 my-12">
+      <section className="product-detail flex flex-row gap-12 my-12 h-screen">
         <div className="product-img-container w-1/3 h-[520px]">
           <img
             className="product-img hover:product-img-hover"
