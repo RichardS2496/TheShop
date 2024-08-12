@@ -13,7 +13,10 @@ export function Hero() {
         </button>
       </div>
       <div className=" w-1/2">
-        <img className="img-hero" src="src\assets\hero_img.png" />
+        <img
+          className="img-hero"
+          src="src\http://runmydev.com/wp-content/uploads/2024/08/hero_img.png"
+        />
       </div>
     </section>
   );
