@@ -33,6 +33,7 @@ export function Login() {
     try {
       if (isRegistered) {
         await createUserWithEmailAndPassword(auth, email, password);
+        await navigate("/", { state: { userEmail: email } });
       } else {
         await signInWithEmailAndPassword(auth, email, password);
       }

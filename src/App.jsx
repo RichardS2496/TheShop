@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { CartProvider } from "./CartContext";
 import { ShoppingCart } from "./pages/ShoppingCart";
-//import { Footer } from "./components/Footer";
+import { Footer } from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import { CategoryView } from "./components/CategoryView";
 //import { SearchResults } from "./pages/SearchResults";
@@ -46,7 +46,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ScrollToTop>
-      {/*<Footer />*/}{" "}
+      <Footer />
     </CartProvider>
   );
 }
