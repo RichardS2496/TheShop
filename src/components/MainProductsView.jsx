@@ -9,7 +9,7 @@ export function MainProductsView() {
   if (error) return <div>Error loading products</div>;
 
   return (
-    <section className="mt-4 h-screen">
+    <section className="mt-4 ">
       <ul className="grid grid-cols-5 gap-8 mb-16">
         {products.map((product) => (
           <li key={product.id}>
