@@ -1,5 +1,5 @@
 .cart-container {
-  @apply max-w-[1366px] mx-auto my-4 flex flex-row gap-4 h-screen;
+  @apply max-w-[1366px] mx-auto my-4 flex flex-row gap-4;
 }
 
 .items-list-container {
