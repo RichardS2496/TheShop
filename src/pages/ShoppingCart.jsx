@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import useCart from "../useCart";
 import "../styles/cartShopping.css";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export function ShoppingCart() {
+  const navigate = useNavigate();
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
   const [quantities, setQuantities] = useState(
     cartItems.reduce((acc, item) => {
@@ -56,6 +58,16 @@ export function ShoppingCart() {
     (total, item) => total + quantities[item.id],
     0
   );
+
+  function openPopup() {
+    document.querySelector(".popup-overlay").style.display = "flex";
+  }
+
+  function closePopup() {
+    document.querySelector(".popup-overlay").style.display = "none";
+    clearCart();
+    navigate("/");
+  }
 
   return (
     <section className="h-screen">
@@ -145,9 +157,13 @@ export function ShoppingCart() {
           </h2>
           <div className="flex flex-col gap-4 text-center">
             {cartItems.length > 0 && (
-              <Link className="bg-orange-500 w-full rounded-xl p-4 text-bold text-white">
+              <button
+                onClick={openPopup}
+                id="popup"
+                className="bg-orange-500 w-full rounded-xl p-4 text-bold text-white"
+              >
                 Checkout
-              </Link>
+              </button>
             )}
             <Link
               to="/"
@@ -163,6 +179,14 @@ export function ShoppingCart() {
           >
             Clear Cart
           </button>
+        </div>
+        <div id="popup" className="popup-overlay">
+          <div className="popup-content flex flex-col gap-4">
+            <p>Thank you for trying this application!</p>
+            <button className="close-btn" onClick={closePopup}>
+              Close
+            </button>
+          </div>
         </div>
       </section>
     </section>

@@ -55,7 +55,7 @@ export function Header() {
               : `${myLocation.city}, ${myLocation.zip}`}
           </div>
         </a>
-        <div className="text-start text-slate-500">
+        <div className="text-start text-slate-500 hidden">
           <div className="text-xs ">Returns</div>
           <div className="font-bold text-sm">& Orders</div>
         </div>
