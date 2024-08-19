@@ -3,7 +3,7 @@
 }
 
 .items-list-container {
-  @apply border-2 rounded-xl p-4 h-fit;
+  @apply border-2 rounded-xl p-4 min-h-52;
 }
 
 .price-container {
