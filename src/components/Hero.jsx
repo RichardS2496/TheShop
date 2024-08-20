@@ -19,7 +19,7 @@ export function Hero() {
           src="http://runmydev.com/wp-content/uploads/2024/08/hero_img.png"
         />
         <div className="absolute p-4 pb-0 bg-gray-300/70 w-fit rounded-xl bottom-0">
-          <p className="text-lg mb-[-1rem]">"I loved this product"</p>
+          <p className="text-lg mb-[-1rem] italic ">"I loved this product"</p>
           <RateHigh45 />
         </div>
       </div>
