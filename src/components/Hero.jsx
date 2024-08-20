@@ -1,4 +1,5 @@
 import "../styles/categoriesLine.css";
+import { RateHigh45 } from "./rates/RateHigh45";
 
 export function Hero() {
   return (
@@ -11,12 +12,15 @@ export function Hero() {
           Get to know our best offers and start enjoying them.
         </p>
       </div>
-      <div className=" w-1/2 relative">
-        <div className=" absolute w-4/5 aspect-w-1 aspect-h-1 rounded-full bg-orange-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <img
-            className="img-hero "
-            src="http://runmydev.com/wp-content/uploads/2024/08/hero_img.png"
-          />
+      <div className=" w-1/2 relative ">
+        <div className="z-0 absolute w-3/5 h-64 rounded-xl bg-orange-500 top-0 right-0 transform -translate-x-0 -translate-y-0"></div>
+        <img
+          className="img-hero absolute z-1 w-4/5 right-0"
+          src="http://runmydev.com/wp-content/uploads/2024/08/hero_img.png"
+        />
+        <div className="absolute p-4 pb-0 bg-gray-300/70 w-fit rounded-xl bottom-0">
+          <p className="text-lg mb-[-1rem]">"I loved this product"</p>
+          <RateHigh45 />
         </div>
       </div>
     </section>
